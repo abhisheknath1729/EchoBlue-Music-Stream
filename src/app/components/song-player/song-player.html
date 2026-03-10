@@ -1,0 +1,59 @@
+<div *ngIf="state.song" class="player-container">
+    <div class="player-content">
+        <!-- Cover & info -->
+        <div class="player-info">
+            <img class="player-cover" [src]="state.song.coverImage" [alt]="state.song.title"
+                (error)="handleImageError($event)" />
+            <div class="player-text">
+                <span class="player-title">{{ state.song.title }}</span>
+                <span class="player-artist">{{ artistName }}</span>
+            </div>
+            <button mat-icon-button (click)="toggleFavorite()" class="fav-btn"
+                [attr.aria-label]="isFavorite ? 'Remove from favorites' : 'Add to favorites'">
+                <mat-icon [class.fav-active]="isFavorite">
+                    {{ isFavorite ? 'favorite' : 'favorite_border' }}
+                </mat-icon>
+            </button>
+        </div>
+
+        <!-- Main Controls -->
+        <div class="player-body">
+            <div class="player-controls">
+                <button mat-icon-button aria-label="Previous track" class="control-btn">
+                    <mat-icon>skip_previous</mat-icon>
+                </button>
+
+                <button mat-fab color="primary" (click)="togglePlayPause()" aria-label="Play / Pause" class="play-btn">
+                    <mat-icon>{{ state.playing ? 'pause' : 'play_arrow' }}</mat-icon>
+                </button>
+
+                <button mat-icon-button aria-label="Next track" class="control-btn">
+                    <mat-icon>skip_next</mat-icon>
+                </button>
+            </div>
+
+            <div class="player-progress">
+                <span class="time">{{ formatTime(state.currentTime) }}</span>
+                <mat-slider class="progress-slider" [min]="0" [max]="100" [step]="0.1">
+                    <input matSliderThumb [value]="progressPercent" (valueChange)="onProgressChange($event)" />
+                </mat-slider>
+                <span class="time">{{ formatTime(state.duration) }}</span>
+            </div>
+        </div>
+
+        <!-- Volume & Actions -->
+        <div class="player-actions">
+            <div class="volume-control">
+                <mat-icon class="vol-icon">
+                    {{ state.volume > 0.5 ? 'volume_up' : (state.volume > 0 ? 'volume_down' : 'volume_off') }}
+                </mat-icon>
+                <mat-slider class="volume-slider" [min]="0" [max]="100" [step]="1">
+                    <input matSliderThumb [value]="state.volume * 100" (valueChange)="onVolumeChange($event)" />
+                </mat-slider>
+            </div>
+            <button mat-icon-button (click)="stop()" color="warn" aria-label="Stop playback" class="stop-btn">
+                <mat-icon>stop</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

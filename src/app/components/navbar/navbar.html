@@ -1,0 +1,24 @@
+<mat-toolbar class="navbar">
+  <!-- Brand -->
+  <a class="brand" routerLink="/songs">
+    <mat-icon class="brand-icon">headphones</mat-icon>
+    <span class="brand-name">EchoBlue</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <!-- Nav links -->
+  @for (link of navLinks; track link.path) {
+  <a mat-button [routerLink]="link.path" routerLinkActive="active-link" class="nav-btn">
+    <mat-icon>{{ link.icon }}</mat-icon>
+    <span class="nav-label">{{ link.label }}</span>
+  </a>
+  }
+
+  <span class="spacer"></span>
+
+  <!-- Theme toggle -->
+  <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
+    <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,59 @@
+<div class="form-card">
+    <h2 class="form-title">Edit Playlist</h2>
+    <p class="form-subtitle" *ngIf="playlist">Editing "{{ playlist.name }}"</p>
+    <p class="form-subtitle" *ngIf="!playlist">No playlist selected</p>
+
+    <!-- Success banner -->
+    <div *ngIf="saved" class="success-banner">
+        ✅ Playlist saved successfully!
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate *ngIf="playlist">
+
+        <!-- Name -->
+        <div class="field">
+            <label class="label" for="ple-name">Playlist Name</label>
+            <input class="input" id="ple-name" type="text" formControlName="name" placeholder="Playlist name"
+                [ngClass]="{ 'invalid': f['name'].invalid && (f['name'].touched || submitted) }" />
+            <div class="errors" *ngIf="f['name'].invalid && (f['name'].touched || submitted)">
+                <span *ngIf="f['name'].errors?.['required']">Playlist name is required.</span>
+                <span *ngIf="f['name'].errors?.['minlength']">
+                    Name must be at least 2 characters.
+                </span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="field">
+            <label class="label" for="ple-desc">Description</label>
+            <textarea class="input textarea" id="ple-desc" formControlName="description"
+                placeholder="Describe your playlist…" rows="3"
+                [ngClass]="{ 'invalid': f['description'].invalid && (f['description'].touched || submitted) }"></textarea>
+            <div class="errors" *ngIf="f['description'].invalid && (f['description'].touched || submitted)">
+                <span *ngIf="f['description'].errors?.['required']">Description is required.</span>
+                <span *ngIf="f['description'].errors?.['minlength']">
+                    Description must be at least 5 characters.
+                </span>
+            </div>
+        </div>
+
+        <!-- Song picker -->
+        <div class="field">
+            <label class="label">Songs in Playlist</label>
+            <div class="song-picker">
+                <div *ngFor="let song of songs" class="pick-chip" [ngClass]="{ 'selected': isSongSelected(song.id) }"
+                    (click)="toggleSong(song.id)">
+                    {{ song.title }}
+                </div>
+            </div>
+            <div class="errors" *ngIf="submitted && selectedSongIds.length === 0">
+                <span>Select at least one song.</span>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <button class="submit-btn" type="submit">
+            Save Changes
+        </button>
+    </form>
+</div>

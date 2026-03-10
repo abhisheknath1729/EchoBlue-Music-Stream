@@ -1,0 +1,78 @@
+<!-- Show artist detail when artist data is loaded -->
+<div *ngIf="artist" class="artist-detail-container">
+
+    <!-- ── Hero Header ──────────────────────────────────── -->
+    <header class="artist-header" [ngStyle]="getHeroGradient()">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="artist-profile">
+                <img class="profile-img" [src]="artist.image" [alt]="artist.name" (error)="handleImageError($event)" />
+                <div class="profile-text">
+                    <div class="verified-badge">
+                        <mat-icon>verified</mat-icon> Verified Artist
+                    </div>
+                    <h1 class="artist-display-name">{{ artist.name }}</h1>
+                    <p class="artist-full-bio">{{ artist.bio }}</p>
+                    <div class="header-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">{{ topSongs.length }}</span>
+                            <span class="stat-label">Top Tracks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">{{ albums.length }}</span>
+                            <span class="stat-label">Albums</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="detail-body">
+        <!-- ── Top Tracks Section ───────────────────────────── -->
+        <section *ngIf="topSongs.length > 0" class="content-section">
+            <h2 class="section-title">Popular Tracks</h2>
+            <div class="track-list-modern">
+                <div *ngFor="let song of topSongs; let i = index" class="track-item-card"
+                    [ngClass]="{ 'is-playing': isCurrentSong(song.id) && isPlaying }" (click)="playSong(song)">
+
+                    <div class="track-index">{{ i + 1 }}</div>
+                    <img class="track-thumb" [src]="song.coverImage" [alt]="song.title"
+                        (error)="handleImageError($event)" />
+
+                    <div class="track-main">
+                        <span class="track-name">{{ song.title }}</span>
+                        <span class="track-genre-label">{{ song.genre }}</span>
+                    </div>
+
+                    <div class="track-runtime">{{ formatDuration(song.duration) }}</div>
+
+                    <button mat-icon-button class="row-play-btn" color="primary">
+                        <mat-icon>{{ isCurrentSong(song.id) && isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Discography Section ──────────────────────────── -->
+        <section *ngIf="albums.length > 0" class="content-section">
+            <h2 class="section-title">Discography</h2>
+            <div class="album-scroll-grid">
+                <mat-card *ngFor="let album of albums" class="album-item-card" appearance="outlined">
+                    <img mat-card-image [src]="album.coverImage" [alt]="album.title" class="album-img-top"
+                        (error)="handleImageError($event)" />
+                    <mat-card-content class="album-card-info">
+                        <h4 class="album-name-txt">{{ album.title }}</h4>
+                        <p class="album-year-txt">{{ album.releaseDate }}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Empty state when no artist is loaded -->
+<div *ngIf="!artist" class="empty-state">
+    <span class="empty-icon">🎤</span>
+    <p class="empty-msg">Select an artist to see details.</p>
+</div>

@@ -1,0 +1,32 @@
+<div class="playlist-manager">
+    <h2 class="section-title">Playlists</h2>
+
+    @for (playlist of playlists; track playlist.id) {
+    <div class="playlist-card" [class.expanded]="expandedPlaylistId === playlist.id">
+        <div class="playlist-header" (click)="toggleExpand(playlist.id)">
+            <div class="playlist-meta">
+                <span class="playlist-name">{{ playlist.name }}</span>
+                <span class="playlist-desc">{{ playlist.description }}</span>
+            </div>
+            <span class="playlist-count">{{ playlist.songs.length }} tracks</span>
+            <span class="expand-icon">{{ expandedPlaylistId === playlist.id ? '▲' : '▼' }}</span>
+        </div>
+
+        @if (expandedPlaylistId === playlist.id) {
+        <ul class="playlist-tracks">
+            @for (song of getSongsForPlaylist(playlist); track song.id; let i = $index) {
+            <li class="track-row" [class.active]="isCurrentSong(song.id)" (click)="playSong(song)">
+                <span class="track-num">{{ i + 1 }}</span>
+                <span class="track-title">{{ song.title }}</span>
+                <span class="track-artist">{{ getArtistName(song.artistId) }}</span>
+                <span class="track-dur">{{ formatDuration(song.duration) }}</span>
+                <span class="track-play-icon">
+                    {{ isCurrentSong(song.id) && isPlaying ? '⏸' : '▶' }}
+                </span>
+            </li>
+            }
+        </ul>
+        }
+    </div>
+    }
+</div>

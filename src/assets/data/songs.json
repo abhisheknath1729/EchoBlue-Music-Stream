@@ -1,0 +1,112 @@
+[
+    {
+        "id": "song-1",
+        "title": "God's Plan",
+        "artistId": "artist-1",
+        "albumId": "album-1",
+        "duration": 198,
+        "genre": "Hip-Hop",
+        "audioUrl": "https://example.com/audio/gods-plan.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/9/90/Scorpion_by_Drake.jpg"
+    },
+    {
+        "id": "song-2",
+        "title": "Hotline Bling",
+        "artistId": "artist-1",
+        "albumId": "album-2",
+        "duration": 267,
+        "genre": "R&B",
+        "audioUrl": "https://example.com/audio/hotline-bling.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/a/af/Drake_-_Views_cover.jpg"
+    },
+    {
+        "id": "song-3",
+        "title": "One Dance",
+        "artistId": "artist-1",
+        "albumId": "album-2",
+        "duration": 173,
+        "genre": "Afrobeat",
+        "audioUrl": "https://example.com/audio/one-dance.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/a/af/Drake_-_Views_cover.jpg"
+    },
+    {
+        "id": "song-4",
+        "title": "Stronger",
+        "artistId": "artist-2",
+        "albumId": "album-3",
+        "duration": 312,
+        "genre": "Hip-Hop",
+        "audioUrl": "https://example.com/audio/stronger.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg"
+    },
+    {
+        "id": "song-5",
+        "title": "Heartless",
+        "artistId": "artist-2",
+        "albumId": "album-4",
+        "duration": 211,
+        "genre": "Pop",
+        "audioUrl": "https://example.com/audio/heartless.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/f/f1/808s_%26_Heartbreak.png"
+    },
+    {
+        "id": "song-6",
+        "title": "Blinding Lights",
+        "artistId": "artist-3",
+        "albumId": "album-5",
+        "duration": 200,
+        "genre": "Synth-Pop",
+        "audioUrl": "https://example.com/audio/blinding-lights.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png"
+    },
+    {
+        "id": "song-7",
+        "title": "Save Your Tears",
+        "artistId": "artist-3",
+        "albumId": "album-5",
+        "duration": 215,
+        "genre": "Synth-Pop",
+        "audioUrl": "https://example.com/audio/save-your-tears.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png"
+    },
+    {
+        "id": "song-8",
+        "title": "Goosebumps",
+        "artistId": "artist-4",
+        "albumId": "album-6",
+        "duration": 243,
+        "genre": "Hip-Hop",
+        "audioUrl": "https://example.com/audio/goosebumps.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/a/a0/Birds_in_the_Trap_Sing_McKnight.png"
+    },
+    {
+        "id": "song-9",
+        "title": "SICKO MODE",
+        "artistId": "artist-4",
+        "albumId": "album-7",
+        "duration": 312,
+        "genre": "Hip-Hop",
+        "audioUrl": "https://example.com/audio/sicko-mode.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/0/08/Travis_Scott_-_Astroworld.jpg"
+    },
+    {
+        "id": "song-10",
+        "title": "Nights",
+        "artistId": "artist-5",
+        "albumId": "album-8",
+        "duration": 306,
+        "genre": "R&B",
+        "audioUrl": "https://example.com/audio/nights.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/a/a0/Blonde_-_Frank_Ocean.jpeg"
+    },
+    {
+        "id": "song-11",
+        "title": "Pink + White",
+        "artistId": "artist-5",
+        "albumId": "album-8",
+        "duration": 183,
+        "genre": "R&B",
+        "audioUrl": "https://example.com/audio/pink-white.mp3",
+        "coverImage": "https://upload.wikimedia.org/wikipedia/en/a/a0/Blonde_-_Frank_Ocean.jpeg"
+    }
+]

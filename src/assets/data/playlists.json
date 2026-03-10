@@ -1,0 +1,38 @@
+[
+    {
+        "id": "playlist-1",
+        "name": "Hip-Hop Bangers",
+        "description": "The hardest-hitting hip-hop tracks in one playlist.",
+        "songs": [
+            "song-1",
+            "song-4",
+            "song-8",
+            "song-9"
+        ]
+    },
+    {
+        "id": "playlist-2",
+        "name": "Late Night Vibes",
+        "description": "Smooth, atmospheric tracks for the midnight hours.",
+        "songs": [
+            "song-2",
+            "song-6",
+            "song-7",
+            "song-10",
+            "song-11"
+        ]
+    },
+    {
+        "id": "playlist-3",
+        "name": "EchoBlue Mix",
+        "description": "A curated mix of the best tracks across all genres.",
+        "songs": [
+            "song-1",
+            "song-3",
+            "song-5",
+            "song-6",
+            "song-9",
+            "song-10"
+        ]
+    }
+]

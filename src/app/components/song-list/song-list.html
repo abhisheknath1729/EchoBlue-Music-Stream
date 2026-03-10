@@ -1,0 +1,77 @@
+<div class="song-list">
+    <h2 class="section-title">All Songs</h2>
+
+    <!-- ── Filter Bar ─────────────────────────────────────── -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label class="filter-label">Genre</label>
+            <select class="filter-select" [ngModel]="selectedGenre" (ngModelChange)="selectedGenre = $event">
+                <option [ngValue]="null">All Genres</option>
+                <option *ngFor="let g of uniqueGenres" [ngValue]="g">{{ g | uppercase }}</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Artist</label>
+            <select class="filter-select" [ngModel]="selectedArtistId" (ngModelChange)="selectedArtistId = $event">
+                <option [ngValue]="null">All Artists</option>
+                <option *ngFor="let a of artists" [ngValue]="a.id">{{ a.name }}</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Album</label>
+            <select class="filter-select" [ngModel]="selectedAlbumId" (ngModelChange)="selectedAlbumId = $event">
+                <option [ngValue]="null">All Albums</option>
+                <option *ngFor="let al of uniqueAlbums" [ngValue]="al.id">{{ al.title }}</option>
+            </select>
+        </div>
+        <button *ngIf="selectedGenre || selectedArtistId || selectedAlbumId" mat-stroked-button (click)="clearFilters()"
+            class="clear-btn">
+            <mat-icon>close</mat-icon> Clear
+        </button>
+    </div>
+
+    <!-- Empty state -->
+    <p *ngIf="(songs | filterByGenre:selectedGenre | filterByArtist:selectedArtistId | filterByAlbum:selectedAlbumId).length === 0"
+        class="empty-msg">
+        No songs match the current filters.
+    </p>
+
+    <!-- Song grid using MatCard -->
+    <div class="song-grid"
+        *ngIf="(songs | filterByGenre:selectedGenre | filterByArtist:selectedArtistId | filterByAlbum:selectedAlbumId).length > 0">
+        <mat-card
+            *ngFor="let song of songs | filterByGenre:selectedGenre | filterByArtist:selectedArtistId | filterByAlbum:selectedAlbumId; trackBy: trackBySongId"
+            class="song-card" appearance="outlined" [ngClass]="{ 'playing': isCurrentSong(song.id) && isPlaying }"
+            [appHighlightPlaying]="song.id" (click)="playSong(song)">
+
+            <div class="song-cover-container">
+                <img mat-card-image [src]="song.coverImage" [alt]="song.title" class="song-img" loading="lazy"
+                    (error)="handleImageError($event)" />
+
+                <div class="card-overlay">
+                    <button mat-fab color="primary" class="floating-play-btn"
+                        (click)="playSong(song); $event.stopPropagation()"
+                        [attr.aria-label]="isCurrentSong(song.id) && isPlaying ? 'Pause' : 'Play'">
+                        <mat-icon>{{ isCurrentSong(song.id) && isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
+                    </button>
+                </div>
+
+                <button mat-icon-button class="fav-icon-btn" [class.is-favorite]="isFavorite(song.id)"
+                    (click)="toggleFavorite(song.id, $event)">
+                    <mat-icon>{{ isFavorite(song.id) ? 'favorite' : 'favorite_border' }}</mat-icon>
+                </button>
+            </div>
+
+            <mat-card-content class="song-card-body">
+                <div class="song-meta">
+                    <h3 class="song-title">{{ song.title }}</h3>
+                    <p class="song-artist">{{ getArtistName(song.artistId) }}</p>
+                </div>
+                <div class="song-footer">
+                    <span class="song-genre-tag" *ngIf="song.genre">{{ song.genre }}</span>
+                    <span class="song-dur">{{ formatDuration(song.duration) }}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

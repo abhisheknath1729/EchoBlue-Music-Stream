@@ -1,0 +1,53 @@
+[
+    {
+        "id": "artist-1",
+        "name": "Drake",
+        "bio": "Canadian rapper, singer, and songwriter. One of the best-selling music artists of all time, known for blending hip-hop with R&B and pop.",
+        "image": "https://placehold.co/300x300/1a1a2e/e94560?text=Drake",
+        "topTracks": [
+            "song-1",
+            "song-2",
+            "song-3"
+        ]
+    },
+    {
+        "id": "artist-2",
+        "name": "Kanye West",
+        "bio": "American rapper, record producer, and fashion designer. Widely regarded as one of the most influential hip-hop artists of all time.",
+        "image": "https://placehold.co/300x300/16213e/0f3460?text=Kanye+West",
+        "topTracks": [
+            "song-4",
+            "song-5"
+        ]
+    },
+    {
+        "id": "artist-3",
+        "name": "The Weeknd",
+        "bio": "Canadian singer, songwriter, and record producer known for his sonic versatility and dark lyricism, blending R&B, pop, and electronic music.",
+        "image": "https://placehold.co/300x300/0f3460/e94560?text=The+Weeknd",
+        "topTracks": [
+            "song-6",
+            "song-7"
+        ]
+    },
+    {
+        "id": "artist-4",
+        "name": "Travis Scott",
+        "bio": "American rapper, singer, and record producer known for his atmospheric, psychedelic style of hip-hop and electrifying live performances.",
+        "image": "https://placehold.co/300x300/533483/e94560?text=Travis+Scott",
+        "topTracks": [
+            "song-8",
+            "song-9"
+        ]
+    },
+    {
+        "id": "artist-5",
+        "name": "Frank Ocean",
+        "bio": "American singer, songwriter, and rapper acclaimed for his unconventional musical style blending R&B, soul, and avant-garde pop.",
+        "image": "https://placehold.co/300x300/1a1a2e/53a8b6?text=Frank+Ocean",
+        "topTracks": [
+            "song-10",
+            "song-11"
+        ]
+    }
+]
